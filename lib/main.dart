@@ -20,13 +20,13 @@ class ChatApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomePage(),
 
-      initialRoute:MyRoutes.HomePage,
+      initialRoute:"/",
 
       routes: {
-         "/" :(context) => LoginPage(),
-       MyRoutes.HomePage:(context) => HomePage(),
-        MyRoutes.loginRoute:(context) => LoginPage(),
-        MyRoutes.ChatScreen:(context) => ChatScreen(),
+         "/" :(context) => const LoginPage(),
+       MyRoutes.HomePage:(context) => const HomePage(),
+        MyRoutes.loginRoute:(context) => const LoginPage(),
+        MyRoutes.ChatScreen:(context) => const ChatScreen(),
       },
 
       

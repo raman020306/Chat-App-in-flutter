@@ -1,33 +1,19 @@
+
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+class ChildScreen extends StatefulWidget {
+  const ChildScreen({super.key});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<ChildScreen> createState() => _ChildScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
-  // final SppechToText _sppechToText = SppechToText();
+class _ChildScreenState extends State<ChildScreen> {
 
-  // bool _speechEnabled = false;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   initSpeech();
-  // }
-
-  // void initSpeech() async {
-  //   _speechEnabled = await _sppechToText.initialize();
-  //   setState(() {});
-  // }
-
-  final List<types.Message> _messages = [];
+   final List<types.Message> _messages = [];
   final _user = const types.User(
     id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
   );
@@ -45,7 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
             SizedBox(
               width: 10.0,
             ),
-            Text("DVS Career Counsellor (Parent)"),
+            Text("DVS Career Counsellor (Child)"),
           ],
         ),
       ),

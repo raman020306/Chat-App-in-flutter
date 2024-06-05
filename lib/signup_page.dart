@@ -1,20 +1,20 @@
-
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
 import '../utiles/routes.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
+  
+  get controller => null;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+
+class _SignUpState extends State<SignUp> {
   String name = "";
   bool changebutton = false;
 
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       });
       await Future.delayed(const Duration(seconds: 1));
       // ignore: use_build_context_synchronously
-      await Navigator.pushNamed(context, MyRoutes.HomePage);
+      await Navigator.pushNamed(context, MyRoutes.loginRoute);
       setState(() {
         changebutton = false;
       });
@@ -42,13 +42,10 @@ class _LoginPageState extends State<LoginPage> {
         // color: Colors.white,
         child: SingleChildScrollView(
           child: Form(
-            
             key: _formkey,
             child: SafeArea(
-              
               child: Column(
                 children: [
-                  
                   Image.asset(
                     "assets/images/DVS.png",
                     fit: BoxFit.cover,
@@ -56,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: 250,
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                   ),
                   Text(
                     "Welcome $name",
@@ -66,24 +63,31 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 20.0,
+                    height: 5.0,
+                  ),
+                  const Text(
+                    "Create your Profile ",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5.0,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 16.0, horizontal: 20.0),
                     child: Column(
-                    
                       children: [
-                        
                         TextFormField(
-                        
-
                           decoration: const InputDecoration(
                             
+                            prefixIcon: Icon(Icons.person_outline_outlined),
                             
-                            prefixIcon: Icon(Icons.email_outlined),
-                            hintText: "Enter Email",
-                            labelText: "Email Id",
+                            hintText: "Enter your first ame",
+                            labelText: "First Name",
+                            
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -95,6 +99,23 @@ class _LoginPageState extends State<LoginPage> {
                             name = value;
                             setState(() {});
                           },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.email_outlined),
+                            hintText: "Enter Email",
+                            labelText: "Email Id",
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return ("user cannot be empty");
+                            }
+                            return null;
+                          },
+                          // onChanged: (value) {
+                          //   name = value;
+                          //   setState(() {});
+                          // },
                         ),
                         TextFormField(
                           obscureText: true,
@@ -148,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                                       color: Colors.white,
                                     )
                                   : const Text(
-                                      "Login",
+                                      "Sign Up",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
@@ -160,17 +181,15 @@ class _LoginPageState extends State<LoginPage> {
 
                         _buildSignInWithText(),
                         _buildSocialBtn(),
-                        // _buildSignUpBtn(),
-
                         Center(
                           child: InkWell(
                             onTap: () => Navigator.pushNamed(
-                                context, MyRoutes.SignUpPage),
+                                context, MyRoutes.loginRoute),
                             child: RichText(
                               text: const TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: 'Dont\'t have an Account?',
+                                    text: 'Already have an Account?',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 18.0,
@@ -178,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   TextSpan(
-                                    text: 'Signup',
+                                    text: 'Login',
                                     style: TextStyle(
                                       color: Color.fromARGB(255, 27, 124, 203),
                                       fontSize: 18.0,
